@@ -113,8 +113,7 @@ function Home({ title, description, heroPost, morePosts, profileImage }) {
             )}
           </div>
           <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 rounded-xl bg-violet-100 px-32 py-24 drop-shadow">
-            {
-              profileImage &&
+            {profileImage && (
               <Image
                 className="h-48 w-48 rounded-full bg-violet-500 bg-auto bg-no-repeat"
                 src={urlForImage(profileImage).height(225).width(225).url()}
@@ -122,7 +121,7 @@ function Home({ title, description, heroPost, morePosts, profileImage }) {
                 width="225"
                 height="225"
               />
-            }
+            )}
             <h2 className="font-bold">{title}</h2>
             <PortableText value={description} />
             {/* <p className="text-xl text-center">

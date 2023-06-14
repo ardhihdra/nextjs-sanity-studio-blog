@@ -48,7 +48,7 @@ export default function BlogHeader({
           <div className="mx-auto pr-40 sm:w-3/4">
             <div className="flex items-center justify-between px-12 py-3">
               <div className="flex items-center">
-                { profileImage &&
+                {profileImage && (
                   <Image
                     className="h-12 w-12 rounded-full bg-violet-500 bg-auto bg-center bg-no-repeat p-1"
                     src={urlForImage(profileImage).height(120).width(120).url()}
@@ -56,7 +56,7 @@ export default function BlogHeader({
                     width="120"
                     height="120"
                   />
-                }
+                )}
                 <h1 className="ml-4 text-lg font-bold text-violet-500">
                   {title}
                 </h1>

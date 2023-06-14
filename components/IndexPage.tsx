@@ -166,7 +166,7 @@ function PreviewCard({
     <div className={className}>
       {/* <Image src={src} className="absolute rounded-xl object-fill h-full w-full z-0" alt="banner" width="100" height="640"/> */}
 
-      <div className="absolute z-0 h-full w-full rounded-xl object-fill">
+      <div className="absolute z-0 h-full w-full rounded-xl">
         <CoverImageFull slug={slug} title={title} image={image} priority />
       </div>
       <div className="absolute bottom-0 w-full rounded-bl-xl rounded-br-xl bg-stone-400/20 p-4 text-white">

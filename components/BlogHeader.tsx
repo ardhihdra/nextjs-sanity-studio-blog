@@ -1,9 +1,9 @@
 import { PortableText } from '@portabletext/react'
+import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './BlogHeader.module.css'
-import { urlForImage } from 'lib/sanity.image'
 
 export default function BlogHeader({
   title,
@@ -45,12 +45,16 @@ export default function BlogHeader({
     case 3:
       return (
         <header className="fixed z-10 min-w-full bg-white/90 ">
-          <div className="mx-auto sm:w-3/4 pr-40">
+          <div className="mx-auto pr-40 sm:w-3/4">
             <div className="flex items-center justify-between px-12 py-3">
               <div className="flex items-center">
                 <Image
                   className="h-12 w-12 rounded-full bg-violet-500 bg-auto bg-center bg-no-repeat p-1"
-                  src={profileImage ? urlForImage(profileImage).height(120).width(120).url(): '/next.svg'}
+                  src={
+                    profileImage
+                      ? urlForImage(profileImage).height(120).width(120).url()
+                      : '/next.svg'
+                  }
                   alt="profile"
                   width="120"
                   height="120"

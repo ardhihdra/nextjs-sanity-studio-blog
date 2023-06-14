@@ -6,6 +6,7 @@ import HeroPost from 'components/HeroPost'
 import IndexPageHead from 'components/IndexPageHead'
 import IntroTemplate from 'intro-template'
 import * as demo from 'lib/demo.data'
+import { urlForImage } from 'lib/sanity.image'
 // import MoreStories from 'components/MoreStories'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Image from 'next/image'
@@ -14,7 +15,6 @@ import { IoLogoInstagram, IoLogoTwitter } from 'react-icons/io'
 import { MdOutlineMail } from 'react-icons/md'
 
 import { CoverImageFull } from './CoverImage'
-import { urlForImage } from 'lib/sanity.image'
 export interface IndexPageProps {
   preview?: boolean
   loading?: boolean
@@ -25,14 +25,23 @@ export interface IndexPageProps {
 export default function IndexPage(props: IndexPageProps) {
   const { preview, loading, posts, settings } = props
   const [heroPost, ...morePosts] = posts || []
-  const { title = demo.title, profileImage, description = demo.description } = settings || {}
+  const {
+    title = demo.title,
+    profileImage,
+    description = demo.description,
+  } = settings || {}
 
   return (
     <>
       <IndexPageHead settings={settings} />
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader title={title} description={description} level={3} profileImage={profileImage}/>
+          <BlogHeader
+            title={title}
+            description={description}
+            level={3}
+            profileImage={profileImage}
+          />
           {/* {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -75,18 +84,18 @@ function Home({ title, description, heroPost, morePosts, profileImage }) {
           <div className="grid h-[40rem] w-full gap-4 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-2">
             <PreviewCard
               className="relative rounded-xl sm:row-span-2"
-              title={heroPost.title}
-              description={heroPost.excerpt}
-              image={heroPost.mainImage}
-              slug={heroPost.slug}
+              title={heroPost?.title}
+              description={heroPost?.excerpt}
+              image={heroPost?.mainImage}
+              slug={heroPost?.slug}
             />
             {morePosts[0] ? (
               <PreviewCard
                 className="relative rounded-xl sm:col-span-2"
-                title={morePosts[0].title}
-                description={morePosts[0].excerpt}
-                image={morePosts[0].mainImage}
-                slug={morePosts[0].slug}
+                title={morePosts[0]?.title}
+                description={morePosts[0]?.excerpt}
+                image={morePosts[0]?.mainImage}
+                slug={morePosts[0]?.slug}
               />
             ) : (
               <div className="relative rounded-xl bg-stone-200 sm:col-span-2"></div>
@@ -94,10 +103,10 @@ function Home({ title, description, heroPost, morePosts, profileImage }) {
             {morePosts[1] ? (
               <PreviewCard
                 className="relative rounded-xl sm:col-span-2"
-                title={morePosts[0].title}
-                description={morePosts[0].excerpt}
-                image={morePosts[0].mainImage}
-                slug={morePosts[0].slug}
+                title={morePosts[1]?.title}
+                description={morePosts[1]?.excerpt}
+                image={morePosts[1]?.mainImage}
+                slug={morePosts[1]?.slug}
               />
             ) : (
               <div className="relative rounded-xl bg-stone-200 sm:col-span-2"></div>
@@ -106,7 +115,11 @@ function Home({ title, description, heroPost, morePosts, profileImage }) {
           <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 rounded-xl bg-violet-100 px-32 py-24 drop-shadow">
             <Image
               className="h-48 w-48 rounded-full bg-violet-500 bg-auto bg-no-repeat"
-              src={profileImage ? urlForImage(profileImage).height(225).width(225).url(): '/next.svg'}
+              src={
+                profileImage
+                  ? urlForImage(profileImage).height(225).width(225).url()
+                  : '/next.svg'
+              }
               alt="profile"
               width="225"
               height="225"

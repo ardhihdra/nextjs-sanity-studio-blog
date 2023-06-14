@@ -46,6 +46,7 @@ export default function CoverImage(props: CoverImageProps) {
 }
 
 export function CoverImageFull(props: CoverImageProps) {
+  if (!props.image) return <></>
   return (
     <Image
       src={urlForImage(props.image).height(1000).width(1000).url()}

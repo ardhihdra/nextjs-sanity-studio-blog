@@ -8,7 +8,7 @@ export default function PostHeader(
   props: Pick<Post, 'title' | 'coverImage' | 'date' | 'author' | 'slug'>
 ) {
   const { title, coverImage, date, author, slug } = props
-  console.log('CEK AUTHOR', author.image)
+
   return (
     <>
       <PostTitle>{title}</PostTitle>

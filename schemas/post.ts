@@ -40,10 +40,15 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
+      name: 'categories',
+      title: 'Categories',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'reference', to: { type: 'category' } }],
+    }),
+    defineField({
+      name: 'body',
+      title: 'Content',
+      type: 'blockContent',
     }),
     defineField({
       name: 'excerpt',
@@ -51,7 +56,7 @@ export default defineType({
       type: 'text',
     }),
     defineField({
-      name: 'coverImage',
+      name: 'mainImage',
       title: 'Cover Image',
       type: 'image',
       options: {
@@ -59,7 +64,7 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'date',
+      name: 'publishedAt',
       title: 'Date',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),

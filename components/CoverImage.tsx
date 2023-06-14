@@ -44,3 +44,15 @@ export default function CoverImage(props: CoverImageProps) {
     </div>
   )
 }
+
+export function CoverImageFull(props: CoverImageProps) {
+  return (
+    <Image
+      src={urlForImage(props.image).height(1000).width(1000).url()}
+      className="absolute z-0 h-full w-full rounded-xl object-fill"
+      alt="banner"
+      width="1000"
+      height="1000"
+    />
+  )
+}

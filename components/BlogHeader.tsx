@@ -1,16 +1,20 @@
 import { PortableText } from '@portabletext/react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './BlogHeader.module.css'
+import { urlForImage } from 'lib/sanity.image'
 
 export default function BlogHeader({
   title,
   description,
+  profileImage,
   level,
 }: {
   title: string
   description?: any[]
-  level: 1 | 2
+  profileImage?: any
+  level: 1 | 2 | 3
 }) {
   switch (level) {
     case 1:
@@ -38,6 +42,30 @@ export default function BlogHeader({
         </header>
       )
 
+    case 3:
+      return (
+        <header className="fixed z-10 min-w-full bg-white/90 ">
+          <div className="mx-auto sm:w-3/4 pr-40">
+            <div className="flex items-center justify-between px-12 py-3">
+              <div className="flex items-center">
+                <Image
+                  className="h-12 w-12 rounded-full bg-violet-500 bg-auto bg-center bg-no-repeat p-1"
+                  src={profileImage ? urlForImage(profileImage).height(120).width(120).url(): '/next.svg'}
+                  alt="profile"
+                  width="120"
+                  height="120"
+                />
+                <h1 className="ml-4 text-lg font-bold text-violet-500">
+                  {title}
+                </h1>
+              </div>
+              <button className="rounded-lg bg-violet-500 px-4 py-2 text-white">
+                Login
+              </button>
+            </div>
+          </div>
+        </header>
+      )
     default:
       throw new Error(
         `Invalid level: ${

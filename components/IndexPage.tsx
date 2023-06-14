@@ -40,7 +40,7 @@ export default function IndexPage(props: IndexPageProps) {
             title={title}
             description={description}
             level={3}
-            profileImage={profileImage}
+            profileImage={profileImage || '/next.svg'}
           />
           {/* {heroPost && (
             <HeroPost
@@ -59,7 +59,7 @@ export default function IndexPage(props: IndexPageProps) {
               description={description}
               heroPost={heroPost}
               morePosts={morePosts}
-              profileImage={profileImage}
+              profileImage={profileImage || '/next.svg'}
             />
           </div>
         </Container>

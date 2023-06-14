@@ -11,6 +11,9 @@ export interface PostPageHeadProps {
 
 export default function PostPageHead({ settings, post }: PostPageHeadProps) {
   const title = settings.title ?? demo.title
+
+  if (!post) return <></>
+
   return (
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>

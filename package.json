@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "npm run lint && next build",
     "dev": "next",
     "format": "npx prettier --write . --ignore-path .gitignore --cache",
     "lint": "next lint -- --ignore-path .gitignore",

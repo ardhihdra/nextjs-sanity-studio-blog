@@ -6,7 +6,7 @@ import {
   getSettings,
 } from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import { lazy } from 'react'
 
 const PreviewPostPage = lazy(() => import('components/PreviewPostPage'))
@@ -56,7 +56,8 @@ export default function ProjectSlugRoute(props: PageProps) {
   return <PostPage post={post} morePosts={morePosts} settings={settings} />
 }
 
-export const getStaticProps: GetStaticProps<
+export const getServerSideProps: GetServerSideProps<
+// export const getStaticProps: GetStaticProps<
   PageProps,
   Query,
   PreviewData
@@ -87,11 +88,11 @@ export const getStaticProps: GetStaticProps<
   }
 }
 
-export const getStaticPaths = async () => {
-  const slugs = await getAllPostsSlugs()
+// export const getStaticPaths = async () => {
+//   const slugs = await getAllPostsSlugs()
 
-  return {
-    paths: slugs?.map(({ slug }) => `/posts/${slug}`) || [],
-    fallback: 'blocking',
-  }
-}
+//   return {
+//     paths: slugs?.map(({ slug }) => `/posts/${slug}`) || [],
+//     fallback: 'blocking',
+//   }
+// }
